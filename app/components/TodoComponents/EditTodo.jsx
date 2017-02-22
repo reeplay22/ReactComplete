@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Redux from 'react-redux';
 var {connect} = require('react-redux');
-import EditTodoForm from 'EditTodoForm';
+import EditTodoForm from 'TodoComponents/EditTodoForm';
 var actions = require('actions');
 
 

@@ -86,32 +86,19 @@ export var startUpdateTodo = (id, updateIn) => {
 
         //var todoObj;
         return todoRef.once('value', (snapshot) => {
-            console.log(snapshot.val());
             var todo = snapshot.val();
-            
-            console.log("todo Text: " + snapshot.val().text + "  vs. updateIn :" + updateIn.text );
-            console.log("todo completed: " + snapshot.val().completed + "  vs. updateIn :" + updateIn.completed);
-            
+             
                 var updateOut = {          
                     text: updateIn.text != null || ""  ? updateIn.text : snapshot.val().text,
                     completed: updateIn.completed != snapshot.val().completed ? updateIn.completed : snapshot.val().completed ,
                     completedAt: updateIn.completed ? moment().unix() : null
                 };
 
-            console.log(updateOut.completed + "///////"+ updateOut.completedAt);
-
             return todoRef.update(updateOut).then(()=>{
             dispatch(updateTodo(id, updateOut));
                 });
             });
 
-
-        //todoRef.
-        
-        
-        // return todoRef.update(updateOut).then(()=>{
-        //     dispatch(updateTodo(id, updateOut));
-        // });
     }
 } 
 
@@ -161,6 +148,7 @@ export var startLogout = () => {
     return (dispatch, getState) => {
         return firebase.auth().signOut().then(() => {
             console.log("logged out");
+            dispatch(logout());
         });
     }
 }

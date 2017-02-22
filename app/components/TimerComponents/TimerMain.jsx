@@ -1,33 +1,34 @@
-var React = require('react');
-var Clock = require('Clock');
-var Controls = require('Controls');
+import React from 'react';
+import Navigation from 'Navigation';
+import Clock from 'TimerComponents/Clock';
+import Controls from 'TimerComponents/Controls';
 
 
-var Timer = React.createClass({
+export class TimerMain extends React.Component {
 
-  getInitialState: function () {
+  getInitialState () {
     return {
       count:0,
       timerStatus: 'stopped'
     };
-  },
+  }
 
-  componentWillUnmount: function () {
+  componentWillUnmount () {
     clearInterval(this.timer);
     this.timer = undefined;
-  },
+  }
 
-  handleStartTimer: function () {
+  handleStartTimer () {
     this.setState({
       timerStatus: 'started'
     });
-  },
+  }
 
-  handleStatusChange: function (newStatus) {
+  handleStatusChange(newStatus) {
     this.setState({timerStatus: newStatus})
-  },
+  }
 
-  componentDidUpdate: function (prevProps, prevState) {
+  componentDidUpdate (prevProps, prevState) {
 
     if (this.state.timerStatus !== prevState.timerStatus){
       switch (this.state.timerStatus){
@@ -44,9 +45,9 @@ var Timer = React.createClass({
         break;
       }
     }
-  },
+  }
 
-  startTimer: function () {
+  startTimer () {
     this.timer = setInterval(() => {
       var newCount = this.state.count + 1;
       this.setState({
@@ -54,9 +55,9 @@ var Timer = React.createClass({
       });
     }, 1000);
 
-  },
+  }
 
-  render: function () {
+  render () {
 
     var {count, timerStatus} = this.state;
 
@@ -70,13 +71,16 @@ var Timer = React.createClass({
 
     return (
       <div>
+     
+      <div>
           <h1 className="page-title">Timer SHOOORRR!!</h1>
           <Clock totalSeconds={count} />
           {renderControlArea()}
+          </div>
       </div>
     )
   }
 
-});
+};
 
-module.exports = Timer;
+module.exports = TimerMain;

@@ -1,30 +1,22 @@
 import React from 'react';
 import * as Redux from 'react-redux';
-var moment = require('moment');
 
-import TodoList from 'TodoList';
-import AddTodo from 'AddTodo';
-import TodoSearch from 'TodoSearch';
-import Login from 'Login';
+import TodoList from 'TodoComponents/TodoList';
+import AddTodo from 'TodoComponents/AddTodo';
+import TodoSearch from 'TodoComponents/TodoSearch';
+
 import * as actions from 'actions';
 
-export class TodoApp extends React.Component {
+export class TodoMain extends React.Component {
 
-  onLogout(e) {
-    var {dispatch} = this.props;
-    e.preventDefault();
 
-    dispatch(actions.startLogout());
-  }
 //<!-- <div><p>{auth.user.displayName}</p><img url={auth.user.photoURL}/></div>  -->
   render () {
     //var {auth} = this.state;
     return (
       <div>
-          <div className="page-actions">
-     
-          <a href="#" onClick={this.onLogout.bind(this)}>Log Out</a>
-          </div>
+      
+          
         <h1 className="page-title">Todo App</h1>
         <div className="row">
           <div className="column small-centered small-11 medium-6 large-5">
@@ -42,4 +34,4 @@ export class TodoApp extends React.Component {
 
 };
 
-export default Redux.connect()(TodoApp);
+export default Redux.connect()(TodoMain);

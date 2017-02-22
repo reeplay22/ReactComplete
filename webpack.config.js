@@ -56,6 +56,7 @@ module.exports = {
         ],
         alias: {
             app: "app",
+            components: "app/components",
             applicationStyles: 'app/styles/app.scss',
             configureStore: 'app/store/configureStore.jsx',
             actions: 'app/actions/actions.jsx',
@@ -83,7 +84,6 @@ module.exports = {
             {
                 loader: 'file-loader',
                 test: /\.(jpg|png)$/
-
             },
         ]
     },

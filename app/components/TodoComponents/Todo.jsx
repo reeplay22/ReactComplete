@@ -2,7 +2,7 @@ var React = require('react');
 var moment = require('moment');
 var {connect} = require('react-redux');
 var actions = require('actions');
-import EditTodo from 'EditTodo';
+import EditTodo from 'TodoComponents/EditTodo';
 //var store = require('store');
 
 export class Todo extends React.Component {

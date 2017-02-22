@@ -39,7 +39,6 @@ export var showCompletedReducer = (state = false, action) => {
     }
 }
 
-var nextTodoID = 1;
 export var todosReducer = (state=[], action) => {
  
     switch(action.type){
@@ -81,7 +80,25 @@ export var todosReducer = (state=[], action) => {
         default:
             return state;
     
-    };
+    }
+}
+
+    export var weatherReducer = (state = {}, action) => {
+    switch (action.type) {
+        case 'GET_WEATHER':
+            return !state;       
+        default:
+            return state
+        }
+    }
 
 
-};
+    export var timerReducer = (state = {}, action) => {
+        switch (action.type) {
+            case 'START_TIMER':
+                return !state;       
+            default:
+                return state
+        }
+    }
+

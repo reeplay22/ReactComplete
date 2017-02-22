@@ -1,19 +1,20 @@
-var React = require('react');
-var WeatherNextForm = require('WeatherNextForm');
-var WeatherNextMessage = require('WeatherNextMessage');
-var openWeatherMap = require('openWeatherMap');
+import React from 'react';
+import * as Redux from 'react-redux';
+import WeatherNextForm from'WeatherComponents/WeatherNextForm';
+import WeatherNextMessage from'WeatherComponents/WeatherNextMessage';
+import openWeatherMap from'openWeatherMap';
 
-var WeatherMessage = React.createClass({
+export class WeatherMessage extends React.Component {
 
 
-  getInitialState: function () {
+  getInitialState () {
     return {
       holdBack: true,
       forecast: []
     }
-  },
+  }
 
-  handleSearchForecast: function (nextLocation) {
+  handleSearchForecast (nextLocation) {
     var that = this;
   //   this.setState({
   //     holdBack: false,
@@ -36,11 +37,11 @@ var WeatherMessage = React.createClass({
        });
     });
     //console.log("forecast 2 :" + that.state.forecast);
-  },
+  }
 
 
 
-  render: function () {
+  render () {
 
     var {temp, location, nextLocation, tempMax, tempMin, wind, clouds, humidity, weatherMain, weatherDescription, holdBack, today } = this.props;
 
@@ -81,7 +82,8 @@ var WeatherMessage = React.createClass({
     );
   }
 
-})
+}
 
 
-module.exports = WeatherMessage;
+export default Redux.connect()(WeatherMessage);
+

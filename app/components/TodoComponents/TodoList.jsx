@@ -1,8 +1,8 @@
 var React = require('react');
-import Todo from 'Todo'
+import Todo from 'TodoComponents/Todo'
 var {connect} = require('react-redux');
 var TodoAPI = require('TodoAPI');
-import EditTodo from 'EditTodo';
+import EditTodo from 'TodoComponents/EditTodo';
 
 export class TodoList extends React.Component{
 

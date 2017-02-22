@@ -1,20 +1,27 @@
-var React = require('react');
+import React from 'react';
+import * as Redux from 'react-redux';
+import WeatherForm from 'WeatherComponents/WeatherForm';
+import WeatherMessage from 'WeatherComponents/WeatherMessage';
+import Navigation from 'Navigation';
+import openWeatherMap from 'openWeatherMap';
+import ErrorModal from 'WeatherComponents/ErrorModal';
 
-var WeatherForm = require('WeatherForm');
-var WeatherMessage = require('WeatherMessage');
+export class WeatherMain extends React.Component {
 
-var openWeatherMap = require('openWeatherMap');
-var ErrorModal = require('ErrorModal')
-
-var Weather = React.createClass({
-
-  getInitialState: function () {
-    return {
+  constructor (props) {
+    super(props);
+    this.state = {
       isLoading: false,
-    }
-  },
+    };
+  }
 
-  handleSearch: function(location){
+  // getInitialState () {
+  //   return {
+  //     isLoading: false,
+  //   }
+  // }
+
+  handleSearch(location){
     var that = this;
 
     this.setState({
@@ -49,27 +56,27 @@ var Weather = React.createClass({
        });
     });
 
-  },
+  }
 
-  componentDidMount: function () {
+  componentDidMount () {
     var location = this.props.location.query.location;
 
     if(location && location.length > 0 ){
       this.handleSearch(location);
       window.location.hash = '#/';
     }
-  },
+  }
 
-  componentWillReceiveProps: function (newProps) {
+  componentWillReceiveProps (newProps) {
     var location = newProps.location.query.location;
 
     if(location && location.length > 0 ){
       this.handleSearch(location);
       window.location.hash = '#/';
     }
-  },
+  }
 
-  render: function (){
+  render () {
     var {main, weather, wind, clouds, datalocation, isLoading, errorMessage, errorCode, nextLocation} = this.state;
 
     function renderMessage (){
@@ -94,13 +101,22 @@ var Weather = React.createClass({
 
     return(
       <div>
-        <h1 className="text-center page-title">Get Weather</h1>
-        <WeatherForm onSearch={this.handleSearch}/>
-        {renderMessage()}
-        {renderError()}
+      
+        <div>
+          <h1 className="text-center page-title">Get Weather</h1>
+          <WeatherForm onSearch={this.handleSearch}/>
+          {renderMessage()}
+          {renderError()}
+        </div>
       </div>
     )
 
   }
-});
-module.exports = Weather;
+};
+export default Redux.connect(
+  (state) => {
+    return state
+  }
+)(WeatherMain);
+
+//WeatherMain.getInitialState

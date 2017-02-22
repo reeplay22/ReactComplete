@@ -1,7 +1,7 @@
 var React = require('react');
 var Clock = require('Clock')
-var CountdownForm = require('CountdownForm');
-var Controls = require('Controls');
+var CountdownForm = require('TimerComponents/CountdownForm');
+var Controls = require('TimerComponents/Controls');
 
 var Countdown = React.createClass({
 
