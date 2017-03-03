@@ -5,15 +5,10 @@ export var authReducer = (state={}, action) => {
     switch(action.type) {
         case "LOGIN": 
             return {
-                uid: action.uid
+                user: action.user
             }
         case "LOGOUT":
             return {};
-
-        // case "SAVE_USER":
-        //     return {
-        //         user: action.user
-        //     }
 
         default:
             return state;

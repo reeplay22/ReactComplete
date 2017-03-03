@@ -38,6 +38,3 @@ export default (
       <Route path='login' component={Login} onEnter={redirectIfLoggedIn}></Route>
     </Router>
     );
-    //<Route path='Login'></Route>
-
-    //<IndexRoute component={Main} onEnter={redirectIfLoggedIn}/>

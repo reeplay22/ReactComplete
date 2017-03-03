@@ -66,7 +66,8 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     module: {
-        loaders: [{
+        loaders: [
+            {
                 loader: 'babel-loader',
                 query: {
                     presets: ['react', 'es2015', 'stage-0']
@@ -74,17 +75,18 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/
             },
-            {
+             {
                 loader: 'url-loader',
-                test: /\.(png|jpg)$/,
-                options: {
+                test:/\.(png|jpg)$/,
+                    options: {
                     limit: 25000
-                }
+                    }
             },
             {
                 loader: 'file-loader',
-                test: /\.(jpg|png)$/
-            },
+                test:/\.(jpg|png)$/
+
+            }
         ]
     },
     sassLoader: {

@@ -42,4 +42,7 @@ export class Login extends React.Component {
 
 }
 //<button className="button" onClick={this.onLogin}>Login with FaceBook</button> 
+//<div>
+                            //     <button className="button" onClick={this.onLoginOne("facebook")}>Login with FaceBook</button> 
+                            // </div>
 export default Redux.connect()(Login);

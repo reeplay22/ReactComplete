@@ -10,7 +10,7 @@ import * as actions from 'actions';
 export class TodoMain extends React.Component {
 
 
-//<!-- <div><p>{auth.user.displayName}</p><img url={auth.user.photoURL}/></div>  -->
+//<!--   -->
   render () {
     //var {auth} = this.state;
     return (

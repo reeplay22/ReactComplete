@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from 'Navigation';
+import * as Redux from 'react-redux';
 import Clock from 'TimerComponents/Clock';
 import Controls from 'TimerComponents/Controls';
 
@@ -83,4 +83,8 @@ export class TimerMain extends React.Component {
 
 };
 
-module.exports = TimerMain;
+export default Redux.connect(
+  (state) => {
+    return state
+  }
+)(TimerMain);

@@ -2,14 +2,13 @@ import React from 'react';
 import * as Redux from 'react-redux';
 import * as actions from 'actions';
 var {Link, IndexLink} = require('react-router');
-// var About = require('About');
-// var Examples = require('Examples');
-// var Extra = require('Extra');
+
 
  export class Navigation extends React.Component {
 
    constructor(props){
      super(props);
+    
    }
 
    onLogout(e) {
@@ -31,6 +30,9 @@ var {Link, IndexLink} = require('react-router');
    }
 
   render () {
+
+    var {auth} = this.props;  
+    // 
     return(
       <div className="top-bar">
         <div className="top-bar-left">
@@ -53,17 +55,24 @@ var {Link, IndexLink} = require('react-router');
             </li>
           </ul>
         </div>
-        <div className="top-bar-right">
-          
-          <div className="page-actions"> 
+        <div className="top-bar-right">       
+           <span> 
+            <a href="https://github.com/reeplay22" alt="Check out my GitHub!!"><img src={auth.user.photoURL === undefined ?  null : auth.user.photoURL } height="45" width="45" /></a>
+              
+           
             <a href="#" onClick={this.onLogout.bind(this)}>Log Out</a>
-          </div>
+          </span>
+
         </div>
       </div>
     );
 }
 }
-export default Redux.connect()(Navigation);
+export default Redux.connect(
+  (state) => {
+    return state
+  }
+)(Navigation);
 
 // <form onSubmit={this.onSearch}>
 //             <ul className="menu">
@@ -75,4 +84,6 @@ export default Redux.connect()(Navigation);
 //               </li>
 //             </ul>
 //           </form>
+
+
 
