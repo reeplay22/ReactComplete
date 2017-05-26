@@ -1,15 +1,10 @@
-var React = require('react');
+import React from 'react';
+import * as Redux from 'react-redux';
+var {connect} = require('react-redux');
 
-var Clock = React.createClass({
+export class Clock extends React.Component{
 
-  getDefaultProps: function(){
-    totalSeconds: 0
-  },
-  propTypes: {
-    totalSeconds: React.PropTypes.number
-  },
-
-  formatSeconds: function(totalSeconds){
+  formatSeconds (totalSeconds){
     var seconds = totalSeconds % 60;
     var minutes = Math.floor(totalSeconds / 60);
 
@@ -22,9 +17,9 @@ var Clock = React.createClass({
     }
 
     return minutes + ':' + seconds;
-  },
+  }
 
-  render: function() {
+  render () {
     var {totalSeconds} = this.props;
     return(
       <div className="clock">
@@ -34,6 +29,19 @@ var Clock = React.createClass({
       </div>
     );
   }
-});
+};
 
-module.exports = Clock;
+export default connect(
+  (state) => {
+    return state
+  }
+)(Clock)
+ 
+ 
+ Clock.propTypes = {
+    totalSeconds: React.PropTypes.number
+  };
+
+  Clock.getDefaultProps = {
+    totalSeconds: 0
+  };

@@ -1,18 +1,16 @@
-var React = require('react');
+import React from 'react';
+import * as Redux from 'react-redux';
+var {connect} = require('react-redux');
 
-var Controls = React.createClass({
-  propTypes: {
-    countStatus: React.PropTypes.string.isRequired,
-    onStatusChange: React.PropTypes.func.isRequired
-  },
+export class Controls extends React.Component{
 
-  onStatusChange: function (newStatus) {
+  onStatusChange (newStatus) {
     return () => {
         this.props.onStatusChange(newStatus)
     }
-  },
+  }
 
-  render: function () {
+  render () {
     var {countStatus} = this.props;
 
     var renderStartStopButton = () => {
@@ -30,6 +28,15 @@ var Controls = React.createClass({
             </div>
     )
   }
-});
+};
 
-module.exports = Controls;
+export default Redux.connect(
+  (state) => {
+    return state
+  }
+)(Controls)
+
+Controls.propTypes = {
+countStatus: React.PropTypes.string.isRequired,
+    onStatusChange: React.PropTypes.func.isRequired
+}

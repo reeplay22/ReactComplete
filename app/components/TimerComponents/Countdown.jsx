@@ -1,18 +1,19 @@
-var React = require('react');
-var Clock = require('Clock')
-var CountdownForm = require('TimerComponents/CountdownForm');
-var Controls = require('TimerComponents/Controls');
+import React from 'react';
+import Clock from 'Clock';
+import CountdownForm from 'TimerComponents/CountdownForm';
+import Controls from 'TimerComponents/Controls';
+var {connect} = require('react-redux');
 
-var Countdown = React.createClass({
+export class Countdown extends React.Component{
 
-  getInitialState: function () {
+  getInitialState () {
     return {
       count:0,
       countdownStatus: 'stopped'
     };
-  },
+  }
 
-  componentDidUpdate: function (prevProps, prevState) {
+  componentDidUpdate (prevProps, prevState) {
 
     if (this.state.countdownStatus !== prevState.countdownStatus){
       switch (this.state.countdownStatus){
@@ -29,14 +30,14 @@ var Countdown = React.createClass({
         break;
       }
     }
-  },
+  }
 
-  componentWillUnmount: function () {
+  componentWillUnmount () {
     clearInterval(this.timer);
     this.timer = undefined;
-  },
+  }
 
-  startTimer: function () {
+  startTimer () {
 
     this.timer = setInterval(() => {
       var newCount = this.state.count - 1;
@@ -49,21 +50,21 @@ var Countdown = React.createClass({
       }
     }, 1000);
 
-  },
+  }
 
-  handleSetCountdown: function (seconds) {
+  handleSetCountdown (seconds) {
     this.setState({
       count: seconds,
       countdownStatus: 'started'
     });
-  },
+  }
 
-  handleStatusChange: function (newStatus) {
+  handleStatusChange (newStatus) {
     this.setState({countdownStatus: newStatus})
-  },
+  }
 
 
-  render: function () {
+  render () {
     var {count, countdownStatus} = this.state;
       var renderControlArea = () => {
         if(countdownStatus !== 'stopped'){
@@ -82,6 +83,10 @@ var Countdown = React.createClass({
       </div>
     );
   }
-});
+};
 
-module.exports = Countdown;
+export default connect(
+  (state) => {
+    return state
+  }
+)(Countdown)

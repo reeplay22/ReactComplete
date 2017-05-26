@@ -1,8 +1,9 @@
-var React = require('react');
+import React from 'react';
+var {connect} = require('react-redux');
 
-var CountdownForm = React.createClass({
+export class CountdownForm extends React.Component{
 
-  onSubmit: function (e) {
+  onSubmit (e) {
     e.preventDefault();
     var strSeconds = this.refs.seconds.value;
 
@@ -10,9 +11,9 @@ var CountdownForm = React.createClass({
         this.refs.seconds.value = '';
         this.props.onSetCountdown(parseInt(strSeconds, 10));
     }
-  },
+  }
 
-  render: function () {
+  render ()  {
     return (
       <div>
         <form ref="form" onSubmit={this.onSubmit} className="countdown-form">
@@ -22,6 +23,10 @@ var CountdownForm = React.createClass({
       </div>
     );
   }
-});
+};
 
-module.exports = CountdownForm;
+export default connect(
+   (state) => {
+    return state
+  }
+)(CountdownForm)
