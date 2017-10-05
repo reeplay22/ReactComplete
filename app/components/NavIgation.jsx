@@ -57,7 +57,7 @@ var {Link, IndexLink} = require('react-router');
         </div>
         <div className="top-bar-right">       
            <span> 
-            <a href="https://github.com/reeplay22" alt="Check out my GitHub!!"><img src={auth.user.photoURL === undefined ?  null : auth.user.photoURL } height="45" width="45" /></a>
+            <a href="https://github.com/reeplay22" alt="Check out my GitHub!!"><img src={ auth.user.photoURL === undefined ?  null : auth.user.photoURL } height="45" width="45" /></a>
               
            
             <a href="#" onClick={this.onLogout.bind(this)}>Log Out</a>

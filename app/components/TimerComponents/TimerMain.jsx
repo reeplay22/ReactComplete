@@ -6,12 +6,24 @@ import Controls from 'TimerComponents/Controls';
 
 export class TimerMain extends React.Component {
 
-  getInitialState () {
-    return {
-      count:0,
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      count: 0,
       timerStatus: 'stopped'
-    };
+    }
+
+    this.startTimer = this.startTimer.bind(this)
+    this.handleStartTimer = this.handleStartTimer.bind(this)
+    this.handleStatusChange = this.handleStatusChange.bind(this)
   }
+  // getInitialState () {
+  //   return {
+  //     count:0,
+  //     timerStatus: 'stopped'
+  //   };
+  // }
 
   componentWillUnmount () {
     clearInterval(this.timer);
@@ -58,7 +70,7 @@ export class TimerMain extends React.Component {
   }
 
   render () {
-
+      
     var {count, timerStatus} = this.state;
 
       var renderControlArea = () => {
